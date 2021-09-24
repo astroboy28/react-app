@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';  // this import is not needed here so it should be deleted...
 import BlogList from './BlogList';
 import useFetch from './useFetch';
 
