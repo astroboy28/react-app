@@ -24,8 +24,8 @@ const useFetch = (url) => {
                 setError(null);
             })
             .catch(err => {
-                if(err.name === 'AbortError') {
-                    console.log('LLLLOOOOO');
+                if(err.name === 'AbortError') {  // useEffect Cleanup
+                    console.log('Fetch Aborted');  // useEffect Cleanup
                 } else {
                     setError(err.message);
                     setIsLoading(false);
