@@ -7,7 +7,7 @@ const useFetch = (url) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const abortConst = new AbortController();
+        const abortConst = new AbortController();  // useEffect Cleanup
 
         fetch(url, { signal: abortConst.signal })
             .then(res => {
@@ -31,7 +31,7 @@ const useFetch = (url) => {
                     setIsLoading(false);
                 }     
             });
-        return () => abortConst.abort();
+        return () => abortConst.abort();  // useEffect Cleanup
     }, [url]);
 
     return { data, isLoading, error }
