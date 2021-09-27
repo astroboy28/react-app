@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const BlogList = ({blogWatever, title}) => {
+const BlogList = ({blogsssss}) => {
     // (props)  --- destructure ---
     // const blogs = props.blogWatever;
     // const title = props.title;
@@ -8,12 +8,11 @@ const BlogList = ({blogWatever, title}) => {
 
     return ( 
         <div className="blog-list">
-            <h2>{ title }</h2>
-           {blogWatever.map((blogzss) => (
-               <div className="blog-preview" key={blogzss.id}>
-                   <Link to ={`/blogs/${blogzss.id}`}>
-                    <h2>{blogzss.title}</h2>
-                    <p>Written by: {blogzss.author}</p>
+           {blogsssss.map((blog) => (
+               <div className="blog-preview" key={blog.id}>
+                   <Link to ={`/blogs/${blog.id}`}>
+                      <h2>{blog.title}</h2>
+                      <p>Written by: {blog.author}</p>
                    </Link>
                 </div>
            ))}

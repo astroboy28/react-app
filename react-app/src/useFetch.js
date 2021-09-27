@@ -7,34 +7,33 @@ const useFetch = (url) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const abortConst = new AbortController();  // useEffect Cleanup
+        const abortCont = new AbortController();  // useEffect Cleanup
 
-        fetch(url, { signal: abortConst.signal })
+        fetch(url, { signal: abortCont.signal })
             .then(res => {
-                console.log(res);
-                if(!res.ok){
+                if(!res.ok) {
                     throw Error('Could not get the data');
                 }
                 return res.json();
             })
             .then(data => {
-                console.log(data);
+                setIsLoading(false);  // Error handling
                 setData(data);
-                setIsLoading(false);
                 setError(null);
             })
             .catch(err => {
                 if(err.name === 'AbortError') {  // useEffect Cleanup
                     console.log('Fetch Aborted');  // useEffect Cleanup
                 } else {
+                    // auto catches network / connection error
                     setError(err.message);
                     setIsLoading(false);
                 }     
             });
-        return () => abortConst.abort();  // useEffect Cleanup
+        return () => abortCont.abort();  // useEffect Cleanup
     }, [url]);
 
-    return { data, isLoading, error }
+    return { data, isLoading, error };
 }
  
 export default useFetch;
