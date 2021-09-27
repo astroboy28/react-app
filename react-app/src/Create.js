@@ -1,7 +1,38 @@
+import { useState } from "react";
+// Controlled Inputs (forms)
+
 const Create = () => {
+    const [title, setTitle] = useState('');  
+    const [body, setBody] = useState('');
+    const [author, setAuthor] = useState('mario');
+
     return ( 
         <div className="create">
-            <h1>This is the CREATE PAGE.</h1>
+            <h1>Add a New Blog</h1>
+            <form>
+                <label>Blog title:</label>
+                <input type="text" 
+                       required   
+                       value={ title } 
+                       onChange = {(e) => setTitle(e.target.value)}          
+                />
+                <label>Blog body:</label>
+                <textarea
+                    required
+                    value={ body } 
+                    onChange = {(e) => setBody(e.target.value)} 
+                ></textarea>
+                <label>Blog author:</label>
+                <select
+                    value = { author }
+                    onChange = {(e) => setAuthor(e.target.value)} 
+                >
+                    <option value="mario">mario</option>
+                    <option value="yoshi">yoshi</option>
+                </select>
+                <button>Add Blog</button>
+                <p>{ author }</p>
+            </form>
         </div>
      );
 }
