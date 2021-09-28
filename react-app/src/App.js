@@ -4,6 +4,7 @@ import Create from './Create';
 import BlogDetails from './BlogDetails';
 import Footer from './Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NotFound from './NotFound';
 
 function App() {
   
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/blogs/:id">
             <BlogDetails />
+          </Route>
+          <Route path="*">  {/* not found page */}
+            <NotFound />
           </Route>
         </Switch>
       </div>
