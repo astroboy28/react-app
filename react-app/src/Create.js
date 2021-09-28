@@ -1,11 +1,14 @@
 import { useState } from "react";
 // Controlled Inputs (forms)
+import { useHistory } from "react-router-dom";
+// Programmatic Redirects
 
 const Create = () => {
     const [title, setTitle] = useState('');  
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('mario');
     const [isPending, setIsPending] = useState(false);
+    const history = useHistory();
 
     // Submit Events
     const handleSubmit = (e) => {
@@ -22,6 +25,8 @@ const Create = () => {
         }).then(() => {
             console.log('New Blog Added');
             setIsPending(false);
+            //history.go(-1);
+            history.push('/');
         });
     }
 
